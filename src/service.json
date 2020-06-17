@@ -204,7 +204,8 @@
           "location": "json"
         }
       },
-      "responseClass": "CSD\\Marketo\\Response\\RequestCampaignResponse"
+      "responseModel": "baseResponse",
+      "responseClass": "CSD\\Marketo\\Response"
     },
     "scheduleCampaign": {
       "httpMethod": "POST",
@@ -217,7 +218,8 @@
           "location": "json"
         }
       },
-      "responseClass": "CSD\\Marketo\\Response\\ScheduleCampaignResponse"
+      "responseModel": "baseResponse",
+      "responseClass": "CSD\\Marketo\\Response"
     },
     "createOrUpdateLeads": {
       "httpMethod": "POST",
@@ -262,7 +264,8 @@
           "location": "query"
         }
       },
-      "responseClass": "CSD\\Marketo\\Response\\AssociateLeadResponse"
+      "responseModel": "baseResponse",
+      "responseClass": "CSD\\Marketo\\Response"
     },
     "removeLeadsFromList": {
       "httpMethod": "DELETE",
@@ -289,6 +292,16 @@
         }
       },
       "responseClass": "CSD\\Marketo\\Response\\DeleteLeadResponse"
+    },
+    "addCustomActivities": {
+      "httpMethod": "POST",
+      "uri": "activities/external.json",
+      "parameters": {
+        "input": {
+          "location": "json"
+        }
+      },
+      "responseClass": "CSD\\Marketo\\Response\\AddCustomActivitiesResponse"
     },
     "getPagingToken": {
       "httpMethod": "GET",
@@ -345,7 +358,8 @@
           "location": "query"
         }
       },
-      "responseClass": "CSD\\Marketo\\Response\\UpdateEmailContentReponse"
+      "responseModel": "baseResponse",
+      "responseClass": "CSD\\Marketo\\Response"
     },
     "updateEmailContentInEditableSection": {
       "httpMethod": "POST",
@@ -394,6 +408,98 @@
         }
       },
       "responseClass": "CSD\\Marketo\\Response\\GetCustomObjectsResponse"
+    },
+    "describeObject": {
+      "httpMethod": "GET",
+      "uri": "/rest/v1/{objectName}/describe.json",
+      "parameters": {
+        "objectName": {
+          "location": "uri"
+        }
+      },
+      "responseClass": "CSD\\Marketo\\Response"
+    },
+    "createOrUpdateObject": {
+      "httpMethod": "POST",
+      "uri": "/rest/v1/{objectName}.json",
+      "parameters": {
+        "objectName": {
+          "location": "uri"
+        },
+        "action": {
+          "location": "json"
+        },
+        "input": {
+          "location": "json"
+        },
+        "dedupeBy": {
+          "location": "json"
+        }
+      },
+      "responseClass": "CSD\\Marketo\\Response\\GetLeadsResponse"
+    },
+    "getActivityTypes": {
+      "httpMethod": "GET",
+      "uri": "activities/types.json",
+      "parameters": {},
+      "responseModel": "baseResponse",
+      "responseClass": "CSD\\Marketo\\Response"
+    },
+    "getLeadActivity": {
+      "httpMethod": "GET",
+      "uri": "activities.json",
+      "parameters": {
+        "activityTypeIds": {
+          "location": "query"
+        },
+        "nextPageToken": {
+          "location": "query"
+        },
+        "batchSize": {
+          "location": "query"
+        },
+        "listId": {
+          "location": "query"
+        },
+        "leadIds": {
+          "location": "query"
+        }
+      },
+      "responseModel": "baseResponse",
+      "responseClass": "CSD\\Marketo\\Response"
+    }
+  },
+  "models": {
+    "baseResponse": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string"
+        },
+        "success": {
+          "type": "string",
+          "required": true
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "The error code."
+              },
+              "message": {
+                "type": "string",
+                "description": "The detailed message from the server."
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": {
+        "location": "json"
+      }
     }
   }
 }

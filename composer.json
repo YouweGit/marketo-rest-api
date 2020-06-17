@@ -2,9 +2,9 @@
     "name": "youwe/marketo-rest-api",
     "description": "A PHP client for the Marketo.com REST API",
     "license": "MIT",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4",
         "guzzle/guzzle": "~3.8",
         "commerceguys/guzzle-oauth2-plugin": "~1.0"
     }

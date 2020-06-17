@@ -6,7 +6,7 @@ Installation
 ----------------
 The recommended way of installing the client is via [Composer](http://getcomposer.org/). Simply run the following command to add the library to your composer.json file.
 
-    composer require dchesterton/marketo-rest-api
+    composer require youwe/marketo-rest-api
 
 Setup
 ----------------
@@ -31,7 +31,7 @@ use CSD\Marketo\Client;
 $client = Client::factory(array(
     'client_id' => 'Marketo client ID',         // required
     'client_secret' => 'Marketo client secret', // required
-    'munchkin_id' => '100-AEK-913' // alternatively, you can supply the full URL, e.g. 'url' => 'https://100-AEK-913.mktorest.com'
+    'munchkin_id' => '100-AEK-913', // alternatively, you can supply the full URL, e.g. 'url' => 'https://100-AEK-913.mktorest.com'
     'bulk' => true // if uploading leads via file upload (e.g. csv)
 ));
 ```
